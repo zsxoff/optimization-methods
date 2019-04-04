@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 
 from simethods.newton_raphson_2d import newton_raphson_2d
-from misc import inputf
-from sympy import Symbol
-from sympy.utilities.lambdify import lambdastr
+from misc import inputf, func2d_to_string
 from plot_2d import plot_2d
 
 
@@ -21,9 +19,7 @@ def main() -> None:
     x_min, y_min = newton_raphson_2d(f, start_x, start_y, eps)
     f_min = f(x_min, y_min)
 
-    s_x = Symbol('x')
-    s_y = Symbol('y')
-    f_print = lambdastr((s_x, s_y), f(s_x, s_y))
+    f_print = func2d_to_string(f)
 
     print(f'f               = {f_print}\n'
           f'x_min           = {x_min}\n'

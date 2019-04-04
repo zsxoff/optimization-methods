@@ -1,7 +1,7 @@
 from sympy import lambdify, Symbol
 import numpy as np
 import matplotlib.pyplot as plt
-from sympy.utilities.lambdify import lambdastr
+from misc import func2d_to_string
 
 
 def plot_2d(func, x_min, y_min,
@@ -42,13 +42,7 @@ def plot_2d(func, x_min, y_min,
         extent=[X.min(), X.max(), Y.min(), Y.max()],
         cmap='viridis')
 
-    s_x = Symbol('x')
-    s_y = Symbol('y')
-    f_print = lambdastr((s_x, s_y), func(s_x, s_y))
-    f_print = f_print.replace('lambda x,y:', '')
-    f_print = f_print.replace('**', '^')
-
-    plt.title(r'${}$'.format(f_print), fontsize=12)
+    plt.title(r'${}$'.format(func2d_to_string(func)), fontsize=12)
     plt.contour(X, Y, F)
     graphic.plot(x_min, y_min, 'bo')
     plt.show()

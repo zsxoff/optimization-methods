@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 
 from simethods.conjugate_gradient_2d import conjugate_gradient_2d
-from misc import inputf
 from plot_2d import plot_2d
-from sympy import Symbol, cos
-from sympy.utilities.lambdify import lambdastr
+from sympy import cos
+from misc import inputf, func2d_to_string
 
 
 def f(x: float, y: float) -> float:
@@ -21,9 +20,7 @@ def main() -> None:
     x_min, y_min = conjugate_gradient_2d(f, start_x, start_y, eps)
     f_min = f(x_min, y_min)
 
-    s_x = Symbol('x')
-    s_y = Symbol('y')
-    f_print = lambdastr((s_x, s_y), f(s_x, s_y))
+    f_print = func2d_to_string(f)
 
     print(f'f               = {f_print}\n'
           f'x_min           = {x_min}\n'
