@@ -3,13 +3,13 @@ from sympy import Symbol
 from typing import Callable, Tuple
 
 
-def newton_raphson_2d(f: Callable,
-                      x0: float,
-                      y0: float,
-                      eps: float,
-                      max_iters: int = 100) -> Tuple[float, float]:
+def newton_2d(f: Callable,
+              x0: float,
+              y0: float,
+              eps: float,
+              max_iters: int = 100) -> Tuple[float, float]:
     """
-    Newton-Raphson method for f(x, y).
+    Newton method for f(x, y).
 
     """
 

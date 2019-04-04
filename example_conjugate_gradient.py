@@ -2,17 +2,23 @@
 
 from simethods.conjugate_gradient_2d import conjugate_gradient_2d
 from plot_2d import plot_2d
-from sympy import cos
 from misc import inputf, func2d_to_string
+from sympy import cos
 
 
 def f(x: float, y: float) -> float:
-    # TODO Doc
+    """
+    Test function.
+
+    """
     return x ** 2 + y ** 2 + 4 * cos(x)
 
 
 def main() -> None:
-    # TODO Doc
+    """
+    Conjugate gradient method example.
+
+    """
     start_x = inputf('Enter start X: ')
     start_y = inputf('Enter start Y: ')
     eps = inputf('eps: ')
