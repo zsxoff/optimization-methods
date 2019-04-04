@@ -1,8 +1,6 @@
 import numpy as np
-from sympy import Symbol, lambdify
+from sympy import Symbol
 from typing import Callable, Tuple
-from simethods.borders import find_min_border
-from simethods.bisect import bisect_extremum
 from simethods.argmin import compute_optimal_step
 
 
