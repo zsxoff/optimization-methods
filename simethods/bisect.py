@@ -20,7 +20,7 @@ def compare(a, b, mode):
 
 
 @lru_cache(maxsize=16)
-def fib(n):
+def fib(n: int) -> int:
     """
     Compute Fibonacci n value.
 
