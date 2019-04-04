@@ -47,7 +47,11 @@ def bisect_root(f: Callable, a: float, b: float, eps: float) -> float:
             a = c
 
 
-def bisect_extremum(f, a, b, eps, mode='min'):
+def bisect_extremum(f: Callable,
+                    a: float,
+                    b: float,
+                    eps: float,
+                    mode: str = 'min'):
     assert (mode in ('min', 'max')), f'No mode "{mode}"'
 
     if mode == 'min':

@@ -7,11 +7,11 @@ from sympy import Symbol, cos
 from sympy.utilities.lambdify import lambdastr
 
 
-def f(x, y):
+def f(x: float, y: float) -> float:
     return x ** 2 + y ** 2 + 4 * cos(x)
 
 
-def main():
+def main() -> None:
     start_x = inputf('Enter start X: ')
     start_y = inputf('Enter start Y: ')
     eps = inputf('eps: ')

@@ -7,11 +7,11 @@ from sympy.utilities.lambdify import lambdastr
 from plot_2d import plot_2d
 
 
-def f(x, y):
+def f(x: float, y: float) -> float:
     return y ** 4 + x * y ** 3 + 2 * (y ** 2) * (x ** 2) + y + x ** 4 - x
 
 
-def main():
+def main() -> None:
     start_x = inputf('Enter start X: ')
     start_y = inputf('Enter start Y: ')
     eps = inputf('eps: ')

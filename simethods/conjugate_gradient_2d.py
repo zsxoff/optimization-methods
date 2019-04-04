@@ -3,9 +3,14 @@ from sympy import Symbol, lambdify
 from numpy.linalg import norm
 from simethods.bisect import bisect_extremum
 from simethods.borders import find_min_border
+from typing import Callable, Tuple
 
 
-def conjugate_gradient_2d(f, x0, y0, eps, max_iters=100):
+def conjugate_gradient_2d(f: Callable,
+                          x0: float,
+                          y0: float,
+                          eps: float,
+                          max_iters: int = 100) -> Tuple[float, float]:
     """
      Conjugate Gradient method for f(x, y).
 
@@ -35,25 +40,23 @@ def conjugate_gradient_2d(f, x0, y0, eps, max_iters=100):
     while True:
         iterations_count += 1
         if iterations_count > max_iters:
-            return X_0[0][0], X_0[1][0]
+            return float(X_0[0][0]), float(X_0[1][0])
 
         _lambda_vector = X_0 + Symbol('z') * S_0
 
-        _function_z = lambdify(args=(Symbol('z'),),
-                               expr=f(_lambda_vector[0][0],
-                                      _lambda_vector[1][0]))
+        _function_z = lambdify(
+            args=(Symbol('z'),),
+            expr=f(_lambda_vector[0][0], _lambda_vector[1][0]))
 
-        _left, _right = find_min_border(f=_function_z,
-                                        start=0.0,
-                                        init_step=0.25,
-                                        step_expand=1.1,
-                                        max_iters=10)
+        _left, _right = find_min_border(
+            f=_function_z,
+            start=0.0,
+            init_step=0.25,
+            step_expand=1.1,
+            max_iters=10)
 
-        argmin_f = bisect_extremum(f=_function_z,
-                                   a=_left,
-                                   b=_right,
-                                   eps=eps,
-                                   mode='min')
+        argmin_f = bisect_extremum(
+            f=_function_z, a=_left, b=_right, eps=eps, mode='min')
 
         # Compute new X, dim 2x1.
         X_1 = X_0 + argmin_f * S_0
@@ -67,7 +70,7 @@ def conjugate_gradient_2d(f, x0, y0, eps, max_iters=100):
         S_1 = -(grad_1) + norm(grad_1, 2) / norm(grad_0, 2) * S_0
 
         if np.linalg.norm(S_1 - S_0) < eps:
-            return X_1[0][0], X_1[1][0]
+            return float(X_1[0][0]), float(X_1[1][0])
 
         # Set all values as previous step.
         X_0, S_0, grad_0 = X_1, S_1, grad_1

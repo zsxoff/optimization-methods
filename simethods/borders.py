@@ -1,5 +1,11 @@
-def find_min_border(f, start=0.0, init_step=0.25, step_expand=1.1,
-                    max_iters=10):
+from typing import Callable, Tuple
+
+
+def find_min_border(f: Callable,
+                    start: float = 0.0,
+                    init_step: float = 0.25,
+                    step_expand: float = 1.1,
+                    max_iters: int = 10) -> Tuple[float, float]:
     x0 = start
     x1 = start
     r0 = f(x0)
