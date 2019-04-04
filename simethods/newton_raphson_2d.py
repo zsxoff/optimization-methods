@@ -1,8 +1,10 @@
 import numpy as np
 from sympy import Symbol
+from typing import Callable, Tuple
 
 
-def newton_raphson_2d(f, x0, y0, eps):
+def newton_raphson_2d(f: Callable, x0: float, y0: float,
+                      eps: float, max_iters=100) -> Tuple[float, float]:
     """
     Newton-Raphson method for f(x, y).
 
@@ -26,7 +28,12 @@ def newton_raphson_2d(f, x0, y0, eps):
     _f_dy_dx = _f_dy.diff(x, 1)
     _f_dy_dy = _f_dy.diff(y, 1)
 
+    iterations_count = 0
     while True:
+        iterations_count += 1
+        if iterations_count > max_iters:
+            return float(X[0][0]), float(X[1][0])
+
         # Compute gradient, dim 2x1.
         grad = np.zeros((2, 1), dtype=np.float)
         grad[0] = _f_dx.subs([(x, X[0]), (y, X[1])])
@@ -43,7 +50,7 @@ def newton_raphson_2d(f, x0, y0, eps):
         X_NEW = X - np.dot(np.linalg.inv(H), grad)
 
         # If norm(X_NEW - X, 2) < eps, return x_min and y_min.
-        if np.linalg.norm(X_NEW - X, 2) < eps:
-            return X[0][0], X[1][0]
+        if np.linalg.norm(X_NEW - X) < eps:
+            return float(X[0][0]), float(X[1][0])
 
         X = X_NEW

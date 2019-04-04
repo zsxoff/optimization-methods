@@ -1,5 +1,6 @@
 import math
 from functools import lru_cache
+from typing import Callable
 
 
 def compare(a, b, mode):
@@ -18,7 +19,7 @@ def compare(a, b, mode):
         return a > b
 
 
-@lru_cache(maxsize=64)
+@lru_cache(maxsize=16)
 def fib(n):
     """
     Compute Fibonacci n value.
@@ -26,10 +27,11 @@ def fib(n):
     """
     if n < 2:
         return n
+
     return fib(n - 1) + fib(n - 2)
 
 
-def bisect_root(f, a, b, eps):
+def bisect_root(f: Callable, a: float, b: float, eps: float) -> float:
     while True:
         c = (a + b) / 2
 

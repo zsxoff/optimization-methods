@@ -3,7 +3,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from simethods.bisect import bisect_extremum
-from simethods.misc import inputf
+from misc import inputf
 
 
 def f(x):
