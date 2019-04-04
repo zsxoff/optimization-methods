@@ -9,6 +9,7 @@ def plot_2d(func, x_min, y_min,
             graph_x_max=4,
             graph_y_min=-4,
             graph_y_max=4):
+    # TODO Doc
     if x_min < graph_x_min:
         graph_x_min = x_min
 

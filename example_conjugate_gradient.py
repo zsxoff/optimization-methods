@@ -8,10 +8,12 @@ from sympy.utilities.lambdify import lambdastr
 
 
 def f(x: float, y: float) -> float:
+    # TODO Doc
     return x ** 2 + y ** 2 + 4 * cos(x)
 
 
 def main() -> None:
+    # TODO Doc
     start_x = inputf('Enter start X: ')
     start_y = inputf('Enter start Y: ')
     eps = inputf('eps: ')

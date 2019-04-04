@@ -15,6 +15,7 @@ def f(x):
 
 
 def main():
+    # TODO Doc
     # ----- Read values -----
     l_border = inputf("left border: ")
     r_border = inputf("right border: ")

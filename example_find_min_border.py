@@ -6,11 +6,13 @@ from simethods.borders import find_min_border
 
 
 def f(x):
+    # TODO Doc
     # return x**3 - 7.5 * x**2 + 15.9 * x - 7.8
     return x ** 2 - x ** 4
 
 
 def main():
+    # TODO Doc
     # ----- Plot graph -----
     GRAPH_L = -1.2
     GRAPH_R = 1.2

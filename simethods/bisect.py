@@ -32,6 +32,7 @@ def fib(n):
 
 
 def bisect_root(f: Callable, a: float, b: float, eps: float) -> float:
+    # TODO Doc
     while True:
         c = (a + b) / 2
 
@@ -52,6 +53,7 @@ def bisect_extremum(f: Callable,
                     b: float,
                     eps: float,
                     mode: str = 'min'):
+    # TODO Doc
     assert (mode in ('min', 'max')), f'No mode "{mode}"'
 
     if mode == 'min':

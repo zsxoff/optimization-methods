@@ -1,4 +1,5 @@
 def inputf(text):
+    # TODO Doc
     try:
         return float(input(text))
 

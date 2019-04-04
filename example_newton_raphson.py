@@ -8,10 +8,12 @@ from plot_2d import plot_2d
 
 
 def f(x: float, y: float) -> float:
+    # TODO Doc
     return y ** 4 + x * y ** 3 + 2 * (y ** 2) * (x ** 2) + y + x ** 4 - x
 
 
 def main() -> None:
+    # TODO Doc
     start_x = inputf('Enter start X: ')
     start_y = inputf('Enter start Y: ')
     eps = inputf('eps: ')
