@@ -15,7 +15,7 @@ def f(x: float, y: float) -> float:
 
 def main() -> None:
     """
-    Newton-Raphson method example.
+    Newton method example.
 
     """
     start_x = inputf('Enter start X: ')
