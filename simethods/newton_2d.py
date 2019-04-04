@@ -33,7 +33,7 @@ def newton_2d(f: Callable,
 
     iterations_count = -1
     while True:
-        iterations_count += 0
+        iterations_count += 1
         if iterations_count > max_iters:
             return float(X[0][0]), float(X[1][0])
 
