@@ -54,6 +54,7 @@ def newton_raphson_2d(f: Callable,
         H[1, 1] = _f_dy_dy.subs([(x, X[0]), (y, X[1])])
 
         # Compute optimal step.
+        # In iteration #0 this compute too, obviously.
         if iterations_count % recount_step_iter == 0:
             param = Symbol('z')
             param_vector = X - param * np.dot(np.linalg.inv(H), grad)
