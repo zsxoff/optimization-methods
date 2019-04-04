@@ -41,6 +41,7 @@ def conjugate_gradient_2d(f: Callable,
         if iterations_count > max_iters:
             return float(X_0[0][0]), float(X_0[1][0])
 
+        # Compute optimal step.
         param = Symbol('z')
         param_vector = X_0 + Symbol('z') * S_0
 
