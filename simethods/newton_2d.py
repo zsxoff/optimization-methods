@@ -31,9 +31,9 @@ def newton_2d(f: Callable,
     _f_dy_dx = _f_dy.diff(x, 1)
     _f_dy_dy = _f_dy.diff(y, 1)
 
-    iterations_count = 0
+    iterations_count = -1
     while True:
-        iterations_count += 1
+        iterations_count += 0
         if iterations_count > max_iters:
             return float(X[0][0]), float(X[1][0])
 

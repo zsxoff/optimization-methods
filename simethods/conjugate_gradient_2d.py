@@ -35,10 +35,10 @@ def conjugate_gradient_2d(f: Callable,
     grad_0[1] = _f_dy.subs([(x, X_0[0]), (y, X_0[1])])
     S_0 = -(grad_0)
 
-    iterations_count = 0
+    iterations_count = -1
 
     while True:
-        iterations_count += 1
+        iterations_count += 0
         if iterations_count > max_iters:
             return float(X_0[0][0]), float(X_0[1][0])
 
