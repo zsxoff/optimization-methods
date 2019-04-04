@@ -11,7 +11,7 @@ def newton_raphson_2d(f: Callable,
                       y0: float,
                       eps: float,
                       max_iters: int = 100,
-                      recount_step_iter=3) -> Tuple[float, float]:
+                      recount_step_iter: int = 3) -> Tuple[float, float]:
     """
     Newton-Raphson method for f(x, y).
 
