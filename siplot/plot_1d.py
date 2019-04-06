@@ -18,10 +18,6 @@ def plot_1d(func: Callable,
     fig = plt.figure(1)
     graph = fig.add_subplot(1, 1, 1)
 
-    # TODO set_yticks?
-
-    graph.set_xticks(np.arange(graph_x_min, graph_x_max, 0.5))
-    graph.set_xticks(np.arange(graph_x_min, graph_x_max, 0.1), minor=True)
     graph.grid(which='minor', alpha=0.1, linestyle="-")
     graph.grid(which='major', alpha=0.5, linestyle="-")
 
@@ -44,8 +40,6 @@ def plot_1d(func: Callable,
                           linewidth=1.5,
                           color=line.color)
 
-            # TODO graph_ymin graph_ymax
-
     # Plot some vertical lines.
     if lines_xv:
         for line in lines_xv:
@@ -59,6 +53,9 @@ def plot_1d(func: Callable,
 
             if line.x < graph_x_min:
                 graph_x_min = line.x
+
+    graph.set_xticks(np.arange(graph_x_min, graph_x_max, 0.5))
+    graph.set_xticks(np.arange(graph_x_min, graph_x_max, 0.1), minor=True)
 
     # Plot function.
     X = np.arange(graph_x_min, graph_x_max, 0.01)
