@@ -21,17 +21,6 @@ def plot_1d(func: Callable,
     graph.grid(which='minor', alpha=0.1, linestyle="-")
     graph.grid(which='major', alpha=0.5, linestyle="-")
 
-    # Plot some dots.
-    if dots:
-        for dot in dots:
-            graph.plot(dot.x, dot.y, dot.color)
-
-            if dot.x > graph_x_max:
-                graph_x_max = dot.x
-
-            if dot.x < graph_x_min:
-                graph_x_min = dot.x
-
     # Plot some horizontal lines.
     if lines_xh:
         for line in lines_xh:
@@ -54,12 +43,23 @@ def plot_1d(func: Callable,
             if line.x < graph_x_min:
                 graph_x_min = line.x
 
-    graph.set_xticks(np.arange(graph_x_min, graph_x_max, 0.5))
-    graph.set_xticks(np.arange(graph_x_min, graph_x_max, 0.1), minor=True)
-
     # Plot function.
     X = np.arange(graph_x_min, graph_x_max, 0.01)
     graph.plot(X, func(X))
+
+    # Plot some dots.
+    if dots:
+        for dot in dots:
+            graph.plot(dot.x, dot.y, dot.color)
+
+            if dot.x > graph_x_max:
+                graph_x_max = dot.x
+
+            if dot.x < graph_x_min:
+                graph_x_min = dot.x
+
+    graph.set_xticks(np.arange(graph_x_min, graph_x_max, 0.5))
+    graph.set_xticks(np.arange(graph_x_min, graph_x_max, 0.1), minor=True)
 
     # Plot title.
     plt.title(r'${}$'.format(func1d_to_string(func)), fontsize=12)
