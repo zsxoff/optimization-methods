@@ -4,7 +4,7 @@ from typing import List
 from siplot.plot import Dot, LineXV, LineXH, VectorXY
 
 
-def plot_1d(vectors: List[VectorXY] = None,
+def plot_1d(vectors: List[VectorXY],
             dots: List[Dot] = None,
             lines_xh: List[LineXH] = None,
             lines_xv: List[LineXV] = None,
