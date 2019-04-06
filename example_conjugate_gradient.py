@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from simethods.conjugate_gradient_2d import conjugate_gradient_2d
-from plot_2d import plot_2d
+from siplot.plot_2d import plot_2d
 from misc import inputf, func2d_to_string
 from sympy import cos
 
