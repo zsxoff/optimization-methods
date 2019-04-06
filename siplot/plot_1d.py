@@ -42,7 +42,10 @@ def plot_1d(vectors: List[VectorXY] = None,
     # Plot some vectors.
     if vectors:
         for vector in vectors:
-            graph.plot(vector.X, vector.Y)
+            graph.plot(vector.X,
+                       vector.Y,
+                       color=vector.color,
+                       label=vector.label)
 
             if vector.X[0] < graph_x_min:
                 graph_x_min = vector.X[0]
@@ -72,5 +75,6 @@ def plot_1d(vectors: List[VectorXY] = None,
 
     plt.xlabel('x', fontsize=16, style="italic")
     plt.ylabel('f(x)', fontsize=16, style="italic")
+    plt.legend()
 
     plt.show()
