@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from simethods.bisect import bisect_root
-from misc import inputf
+from misc import inputf, func1d_to_string
 from siplot.plot import Dot, LineXV
 from siplot.plot_1d import plot_1d
 
@@ -26,11 +26,14 @@ def main() -> None:
     x_root = bisect_root(f, l_border, r_border, eps)
     f_root = f(x_root)
 
-    # TODO Print function
-    print(f'L:\t{l_border}\n'
-          f'R:\t{r_border}\n'
-          f'eps:\t{eps}\n\n'
-          f'root    = {x_root}\n'
+    f_print = func1d_to_string(f)
+
+    print(f'f:   {f_print}\n'
+          f'L:   {l_border}\n'
+          f'R:   {r_border}\n'
+          f'eps: {eps}\n')
+
+    print(f'root    = {x_root}\n'
           f'f(root) = {f_root}\n')
 
     dots = [

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+from misc import func1d_to_string
 from simethods.borders import find_min_border
 from siplot.plot import LineXV
 from siplot.plot_1d import plot_1d
@@ -26,7 +26,11 @@ def main() -> None:
         LineXV(r_border, 'g')
     ]
 
-    # TODO Print function
+    f_plot = func1d_to_string(f)
+
+    print(f'{f_plot}\n'
+          f'L: {l_border}\n'
+          f'R: {r_border}\n')
 
     plot_1d(f, graph_x_min=-1, graph_x_max=1, lines_xv=lines_xv)
 

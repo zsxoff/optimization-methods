@@ -4,6 +4,7 @@ from simethods.bisect import bisect_extremum
 from misc import inputf
 from siplot.plot_1d import plot_1d
 from siplot.plot import Dot, LineXV
+from misc import func1d_to_string
 
 
 def f(x: float) -> float:
@@ -29,11 +30,14 @@ def main() -> None:
     f_min = f(x_min)
     f_max = f(x_max)
 
-    # TODO Print function
-    print(f'L:\t{l_border}\n'
-          f'R:\t{r_border}\n'
-          f'eps:\t{eps}\n\n'
-          f'x_min    = {x_min}\n'
+    f_print = func1d_to_string(f)
+
+    print(f'f:   {f_print}\n'
+          f'L:   {l_border}\n'
+          f'R:   {r_border}\n'
+          f'eps: {eps}\n')
+
+    print(f'x_min    = {x_min}\n'
           f'f(x_min) = {f_min}\n'
           f'x_max    = {x_max}\n'
           f'f(x_max) = {f_max}\n')
