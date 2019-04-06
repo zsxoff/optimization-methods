@@ -2,14 +2,16 @@ from sympy import lambdify, Symbol
 import numpy as np
 import matplotlib.pyplot as plt
 from misc import func2d_to_string
+from typing import Callable, Tuple
+from siplot.plot import Dot
 
 
-def plot_2d(func,
-            graph_x_min=-4,
-            graph_x_max=4,
-            graph_y_min=-4,
-            graph_y_max=4,
-            dots=None):
+def plot_2d(func: Callable,
+            graph_x_min: float = -4,
+            graph_x_max: float = 4,
+            graph_y_min: float = -4,
+            graph_y_max: float = 4,
+            dots: Tuple[Dot] = None) -> None:
     """
     Plot f(x, y) function with additional plots.
 

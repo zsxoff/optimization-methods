@@ -3,8 +3,11 @@ from sympy.utilities.lambdify import lambdastr
 from sympy import Symbol
 
 
-def inputf(text):
-    # TODO Doc
+def inputf(text: str) -> float:
+    """
+    Simple protected float scanner.
+
+    """
     try:
         return float(input(text))
 

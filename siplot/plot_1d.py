@@ -1,14 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from misc import func1d_to_string
+from typing import Callable, Tuple
+from siplot.plot import Dot, LineXV, LineXH
 
 
-def plot_1d(func,
-            graph_x_min=-4,
-            graph_x_max=4,
-            dots=None,
-            lines_xh=None,
-            lines_xv=None):
+def plot_1d(func: Callable,
+            graph_x_min: float = -4,
+            graph_x_max: float = 4,
+            dots: Tuple[Dot] = None,
+            lines_xh: Tuple[LineXH] = None,
+            lines_xv: Tuple[LineXV] = None) -> None:
     """
     Plot f(x) function with additional plots.
 

@@ -14,7 +14,7 @@ def f(x: float) -> float:
     return x ** 3 - 7.5 * x ** 2 + 15.9 * x - 7.8
 
 
-def main():
+def main() -> None:
     """
     Example of finding the root f(x) by bisection method.
 
@@ -26,6 +26,7 @@ def main():
     x_root = bisect_root(f, l_border, r_border, eps)
     f_root = f(x_root)
 
+    # TODO Print function
     print(f'L:\t{l_border}\n'
           f'R:\t{r_border}\n'
           f'eps:\t{eps}\n\n'

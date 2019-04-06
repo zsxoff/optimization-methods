@@ -14,7 +14,7 @@ def f(x: float) -> float:
     return x ** 3 - 7.5 * x ** 2 + 15.9 * x - 7.8
 
 
-def main():
+def main() -> None:
     """
     Example of finding extremum dots f(x) by bisection method.
 
@@ -29,6 +29,7 @@ def main():
     f_min = f(x_min)
     f_max = f(x_max)
 
+    # TODO Print function
     print(f'L:\t{l_border}\n'
           f'R:\t{r_border}\n'
           f'eps:\t{eps}\n\n'
