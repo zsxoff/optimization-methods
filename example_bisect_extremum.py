@@ -1,30 +1,32 @@
 #!/usr/bin/python3
 
-import numpy as np
-import matplotlib.pyplot as plt
 from simethods.bisect import bisect_extremum
 from misc import inputf
+from siplot.plot_1d import plot_1d
+from siplot.plot import Dot, LineXV
 
 
-def f(x):
+def f(x: float) -> float:
     """
     Test function.
 
     """
-    return x**3 - 7.5 * x**2 + 15.9 * x - 7.8
+    return x ** 3 - 7.5 * x ** 2 + 15.9 * x - 7.8
 
 
 def main():
-    # TODO Doc
-    # ----- Read values -----
-    l_border = inputf("left border: ")
-    r_border = inputf("right border: ")
-    eps = inputf("eps: ")
+    """
+    Example of finding extremum dots f(x) by bisection method.
+
+    """
+    l_border = inputf('left border: ')
+    r_border = inputf('right border: ')
+    eps = inputf('eps: ')
 
     x_min = bisect_extremum(f, l_border, r_border, eps, mode='min')
-    f_min = f(x_min)
-
     x_max = bisect_extremum(f, l_border, r_border, eps, mode='max')
+
+    f_min = f(x_min)
     f_max = f(x_max)
 
     print(f'L:\t{l_border}\n'
@@ -35,34 +37,17 @@ def main():
           f'x_max    = {x_max}\n'
           f'f(x_max) = {f_max}\n')
 
-    # ----- Plot graph -----
-    GRAPH_L = -0.5
-    GRAPH_R = 5.6
+    dots = [
+        Dot(x_min, f_min, 'bo'),
+        Dot(x_max, f_max, 'ro')
+    ]
 
-    fig = plt.figure(1)
-    graph1 = fig.add_subplot(1, 1, 1)
-    graph1.set_xticks(np.arange(GRAPH_L, GRAPH_R, 0.5))
-    graph1.set_xticks(np.arange(GRAPH_L, GRAPH_R, 0.1), minor=True)
+    lines_xv = [
+        LineXV(l_border, 'g'),
+        LineXV(r_border, 'g')
+    ]
 
-    graph1.grid(which='minor', alpha=0.1, linestyle="-")
-    graph1.grid(which='major', alpha=0.5, linestyle="-")
-
-    graph1.axvline(x=l_border, linestyle=":", linewidth=1.5, color='g')
-    graph1.axvline(x=r_border, linestyle=":", linewidth=1.5, color='g')
-
-    X = np.arange(GRAPH_L, GRAPH_R, 0.01)
-    F = f(X)
-
-    graph1.plot(X, F)
-    graph1.plot(x_min, f_min, 'bo')
-    graph1.plot(x_max, f_max, 'ro')
-
-    # Plot title.
-    plt.title(r'$f(x) = x^3 - 7.5x^2 + 15.9x - 7.8$', fontsize=12)
-    plt.xlabel('x', fontsize=16, style="italic")
-    plt.ylabel('f(x)', fontsize=16, style="italic")
-
-    plt.show()
+    plot_1d(f, graph_x_min=0, graph_x_max=4, dots=dots, lines_xv=lines_xv)
 
 
 if __name__ == '__main__':

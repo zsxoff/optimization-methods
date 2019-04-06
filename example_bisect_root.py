@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
-import numpy as np
-import matplotlib.pyplot as plt
 from simethods.bisect import bisect_root
 from misc import inputf
+from siplot.plot import Dot, LineXV
+from siplot.plot_1d import plot_1d
 
 
-def f(x):
+def f(x: float) -> float:
     """
     Test function.
 
@@ -15,11 +15,13 @@ def f(x):
 
 
 def main():
-    # TODO Doc
-    # ----- Read values -----
-    l_border = inputf("left border: ")
-    r_border = inputf("right border: ")
-    eps = inputf("eps: ")
+    """
+    Example of finding the root f(x) by bisection method.
+
+    """
+    l_border = inputf('left border: ')
+    r_border = inputf('right border: ')
+    eps = inputf('eps: ')
 
     x_root = bisect_root(f, l_border, r_border, eps)
     f_root = f(x_root)
@@ -30,33 +32,16 @@ def main():
           f'root    = {x_root}\n'
           f'f(root) = {f_root}\n')
 
-    # ----- Plot graph -----
-    GRAPH_L = -0.5
-    GRAPH_R = 5.6
+    dots = [
+        Dot(x_root, f_root, 'ro'),
+    ]
 
-    fig = plt.figure(1)
-    graph1 = fig.add_subplot(1, 1, 1)
-    graph1.set_xticks(np.arange(GRAPH_L, GRAPH_R, 0.5))
-    graph1.set_xticks(np.arange(GRAPH_L, GRAPH_R, 0.1), minor=True)
+    lines_xv = [
+        LineXV(l_border, 'g'),
+        LineXV(r_border, 'g')
+    ]
 
-    graph1.grid(which='minor', alpha=0.1, linestyle="-")
-    graph1.grid(which='major', alpha=0.5, linestyle="-")
-
-    graph1.axvline(x=l_border, linestyle=":", linewidth=1.5, color='g')
-    graph1.axvline(x=r_border, linestyle=":", linewidth=1.5, color='g')
-
-    X = np.arange(GRAPH_L, GRAPH_R, 0.01)
-    F = f(X)
-
-    graph1.plot(X, F)
-    graph1.plot(x_root, f_root, 'go')
-
-    # Plot title.
-    plt.title(r'$f(x) = x^3 - 7.5x^2 + 15.9x - 7.8$', fontsize=12)
-    plt.xlabel('x', fontsize=16, style="italic")
-    plt.ylabel('f(x)', fontsize=16, style="italic")
-
-    plt.show()
+    plot_1d(f, graph_x_min=0, graph_x_max=4, dots=dots, lines_xv=lines_xv)
 
 
 if __name__ == '__main__':
