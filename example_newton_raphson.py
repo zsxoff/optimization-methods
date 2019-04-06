@@ -3,6 +3,7 @@
 from simethods.newton_raphson_2d import newton_raphson_2d
 from misc import inputf, func2d_to_string
 from siplot.plot_2d import plot_2d
+from siplot.plot import Dot
 
 
 def f(x: float, y: float) -> float:
@@ -27,12 +28,16 @@ def main() -> None:
 
     f_print = func2d_to_string(f)
 
+    dots = [
+        Dot(x_min, y_min, 'ro')
+    ]
+
     print(f'f               = {f_print}\n'
           f'x_min           = {x_min}\n'
           f'y_min           = {y_min}\n'
           f'f(x_min, y_min) = {f_min}\n')
 
-    plot_2d(f, x_min, y_min)
+    plot_2d(f, dots=dots)
 
 
 if __name__ == '__main__':
