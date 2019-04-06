@@ -8,6 +8,10 @@ from sympy.core.symbol import Symbol
 
 def compute_optimal_step(func: Callable, parameterized_vector: ndarray,
                          parameter: Symbol, eps: float) -> float:
+    """
+    Compute minimal (optimal) step for func(parameterized_vector)
+
+    """
     function_z = lambdify(
         args=(parameter,),
         expr=func(parameterized_vector[0][0], parameterized_vector[1][0]))
