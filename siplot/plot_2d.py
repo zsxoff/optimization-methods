@@ -4,26 +4,18 @@ import matplotlib.pyplot as plt
 from misc import func2d_to_string
 
 
-def plot_2d(func, x_min, y_min,
+def plot_2d(func,
             graph_x_min=-4,
             graph_x_max=4,
             graph_y_min=-4,
-            graph_y_max=4):
-    # TODO Doc
-    if x_min < graph_x_min:
-        graph_x_min = x_min
+            graph_y_max=4,
+            dots=None):
+    """
+    Plot f(x, y) function with additional plots.
 
-    if x_min > graph_x_max:
-        graph_x_max = x_min
-
-    if y_min < graph_y_min:
-        graph_y_min = y_min
-
-    if y_min > graph_y_max:
-        graph_y_max = y_min
-
+    """
     fig = plt.figure(1)
-    graphic = fig.add_subplot(1, 1, 1)
+    graph = fig.add_subplot(1, 1, 1)
 
     x = np.arange(graph_x_min, graph_x_max, 0.1)
     y = np.arange(graph_y_min, graph_y_max, 0.1)
@@ -33,6 +25,23 @@ def plot_2d(func, x_min, y_min,
     s_x, s_y = Symbol('x'), Symbol('y')
     F = lambdify(args=(s_x, s_y), expr=func(s_x, s_y), modules='numpy')
     F = F(X, Y)
+
+    # Plot some dots.
+    if dots:
+        for dot in dots:
+            graph.plot(dot.x, dot.y, dot.color)
+
+            if dot.x > graph_x_max:
+                graph_x_max = dot.x
+
+            if dot.x < graph_x_min:
+                graph_x_min = dot.x
+
+            if dot.y > graph_y_max:
+                graph_y_max = dot.y
+
+            if dot.y < graph_y_min:
+                graph_y_min = dot.y
 
     plt.imshow(
         F,
@@ -44,5 +53,4 @@ def plot_2d(func, x_min, y_min,
 
     plt.title(r'${}$'.format(func2d_to_string(func)), fontsize=12)
     plt.contour(X, Y, F)
-    graphic.plot(x_min, y_min, 'bo')
     plt.show()
