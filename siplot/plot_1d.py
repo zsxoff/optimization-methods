@@ -39,6 +39,11 @@ def plot_1d(vectors: List[VectorXY] = None,
     graph_x_min = -4
     graph_x_max = -4
 
+    if vectors:
+        vector = vectors[0]
+        graph_x_min = vector.X[0]
+        graph_x_max = vector.X[-1]
+
     # Plot some vectors.
     if vectors:
         for vector in vectors:
