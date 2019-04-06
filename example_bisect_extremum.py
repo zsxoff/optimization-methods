@@ -3,11 +3,13 @@
 from simethods.bisect import bisect_extremum
 from misc import inputf
 from siplot.plot_1d import plot_1d
-from siplot.plot import Dot, LineXV
+from siplot.plot import Dot, LineXV, VectorXY
 from misc import func1d_to_string
+import numpy as np
+from typing import Union
 
 
-def f(x: float) -> float:
+def f(x: Union[float, np.ndarray]) -> float:
     """
     Test function.
 
@@ -42,6 +44,13 @@ def main() -> None:
           f'x_max    = {x_max}\n'
           f'f(x_max) = {f_max}\n')
 
+    # TODO Move if border is greatest
+    X = np.arange(0, 5, 0.01)
+
+    vectors = [
+        VectorXY(X, f(X), 'slategrey', 'f')
+    ]
+
     dots = [
         Dot(x_min, f_min, 'bo'),
         Dot(x_max, f_max, 'ro')
@@ -52,7 +61,7 @@ def main() -> None:
         LineXV(r_border, 'g')
     ]
 
-    plot_1d(f, graph_x_min=0, graph_x_max=4, dots=dots, lines_xv=lines_xv)
+    plot_1d(vectors=vectors, dots=dots, lines_xv=lines_xv)
 
 
 if __name__ == '__main__':

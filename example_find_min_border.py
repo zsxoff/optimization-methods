@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 from misc import func1d_to_string
 from simethods.borders import find_min_border
-from siplot.plot import LineXV
+from siplot.plot import LineXV, VectorXY
 from siplot.plot_1d import plot_1d
+import numpy as np
+from typing import Union
 
 
-def f(x: float) -> float:
+def f(x: Union[float, np.ndarray]) -> float:
     """
     Test function.
 
@@ -21,6 +23,13 @@ def main() -> None:
 
     l_border, r_border = find_min_border(f)
 
+    # TODO Move if border is greatest
+    X = np.arange(-1, 1, 0.01)
+
+    vectors = [
+        VectorXY(X, f(X), 'slategrey', 'f')
+    ]
+
     lines_xv = [
         LineXV(l_border, 'g'),
         LineXV(r_border, 'g')
@@ -32,7 +41,7 @@ def main() -> None:
           f'L: {l_border}\n'
           f'R: {r_border}\n')
 
-    plot_1d(f, graph_x_min=-1, graph_x_max=1, lines_xv=lines_xv)
+    plot_1d(vectors=vectors, lines_xv=lines_xv)
 
 
 if __name__ == '__main__':

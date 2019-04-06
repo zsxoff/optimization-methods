@@ -2,11 +2,13 @@
 
 from simethods.bisect import bisect_root
 from misc import inputf, func1d_to_string
-from siplot.plot import Dot, LineXV
+from siplot.plot import Dot, LineXV, VectorXY
 from siplot.plot_1d import plot_1d
+import numpy as np
+from typing import Union
 
 
-def f(x: float) -> float:
+def f(x: Union[float, np.ndarray]) -> float:
     """
     Test function.
 
@@ -36,6 +38,13 @@ def main() -> None:
     print(f'root    = {x_root}\n'
           f'f(root) = {f_root}\n')
 
+    # TODO Move if border is greatest
+    X = np.arange(0, 5, 0.01)
+
+    vectors = [
+        VectorXY(X, f(X), 'slategrey', 'f')
+    ]
+
     dots = [
         Dot(x_root, f_root, 'ro'),
     ]
@@ -45,7 +54,7 @@ def main() -> None:
         LineXV(r_border, 'g')
     ]
 
-    plot_1d(f, graph_x_min=0, graph_x_max=4, dots=dots, lines_xv=lines_xv)
+    plot_1d(vectors=vectors, dots=dots, lines_xv=lines_xv)
 
 
 if __name__ == '__main__':
