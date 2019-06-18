@@ -1,25 +1,22 @@
 #!/usr/bin/python3
 
-from simethods.conjugate_gradient_2d import conjugate_gradient_2d
-from siplot.plot_2d import plot_2d
-from misc import inputf, func2d_to_string
+from typing import NoReturn
+
 from sympy import cos
+
+from misc import inputf
+from simethods.conjugate_gradient_2d import conjugate_gradient_2d
 from siplot.plot import Dot
+from siplot.plot_2d import plot_2d
 
 
 def f(x: float, y: float) -> float:
-    """
-    Test function.
-
-    """
+    """Test function."""
     return x ** 2 + y ** 2 + 4 * cos(x)
 
 
-def main() -> None:
-    """
-    Conjugate gradient method example.
-
-    """
+def main() -> NoReturn:
+    """Conjugate gradient method example."""
     start_x = inputf('Enter start X: ')
     start_y = inputf('Enter start Y: ')
     eps = inputf('eps: ')
@@ -27,16 +24,14 @@ def main() -> None:
     x_min, y_min = conjugate_gradient_2d(f, start_x, start_y, eps)
     f_min = f(x_min, y_min)
 
-    f_print = func2d_to_string(f)
-
-    dots = [
-        Dot(x_min, y_min, 'ro')
-    ]
-
-    print(f'f               = {f_print}\n'
-          f'x_min           = {x_min}\n'
+    print(f'x_min           = {x_min}\n'
           f'y_min           = {y_min}\n'
           f'f(x_min, y_min) = {f_min}\n')
+
+    # Plot result.
+    dots = [
+        Dot(x_min, y_min, 'ro'),
+    ]
 
     plot_2d(f, dots=dots)
 

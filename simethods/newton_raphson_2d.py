@@ -1,6 +1,8 @@
+from typing import Callable, Tuple
+
 import numpy as np
 from sympy import Symbol
-from typing import Callable, Tuple
+
 from simethods.argmin import compute_optimal_step
 
 
@@ -10,10 +12,7 @@ def newton_raphson_2d(f: Callable,
                       eps: float,
                       max_iters: int = 100,
                       recount_step_iter: int = 3) -> Tuple[float, float]:
-    """
-    Newton-Raphson method for f(x, y).
-
-    """
+    """Newton-Raphson method for f(x, y)."""
 
     # Use SymPy function.
     x = Symbol('x')

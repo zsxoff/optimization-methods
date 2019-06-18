@@ -1,7 +1,9 @@
-import numpy as np
-from sympy import Symbol
-from numpy.linalg import norm
 from typing import Callable, Tuple
+
+import numpy as np
+from numpy.linalg import norm
+from sympy import Symbol
+
 from simethods.argmin import compute_optimal_step
 
 
@@ -10,10 +12,7 @@ def conjugate_gradient_2d(f: Callable,
                           y0: float,
                           eps: float,
                           max_iters: int = 100) -> Tuple[float, float]:
-    """
-     Conjugate Gradient method for f(x, y).
-
-    """
+    """Conjugate Gradient method for f(x, y)."""
 
     # Use SymPy function.
     x = Symbol('x')
@@ -32,7 +31,7 @@ def conjugate_gradient_2d(f: Callable,
     grad_0 = np.zeros((2, 1), dtype=np.float)
     grad_0[0] = _f_dx.subs([(x, X_0[0]), (y, X_0[1])])
     grad_0[1] = _f_dy.subs([(x, X_0[0]), (y, X_0[1])])
-    S_0 = -(grad_0)
+    S_0 = -grad_0
 
     iterations_count = -1
 
@@ -45,11 +44,10 @@ def conjugate_gradient_2d(f: Callable,
         param = Symbol('z')
         param_vector = X_0 + Symbol('z') * S_0
 
-        optimal_step = compute_optimal_step(
-            func=f,
-            parameterized_vector=param_vector,
-            parameter=param,
-            eps=eps)
+        optimal_step = compute_optimal_step(func=f,
+                                            parameterized_vector=param_vector,
+                                            parameter=param,
+                                            eps=eps)
 
         # Compute new X, dim 2x1.
         X_1 = X_0 + optimal_step * S_0

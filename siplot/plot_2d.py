@@ -1,8 +1,9 @@
-from sympy import lambdify, Symbol
-import numpy as np
-import matplotlib.pyplot as plt
-from misc import func2d_to_string
 from typing import Callable, List
+
+import matplotlib.pyplot as plt
+import numpy as np
+from sympy import Symbol, lambdify
+
 from siplot.plot import Dot
 
 
@@ -11,11 +12,9 @@ def plot_2d(func: Callable,
             graph_x_max: float = 4,
             graph_y_min: float = -4,
             graph_y_max: float = 4,
-            dots: List[Dot] = None) -> None:
-    """
-    Plot f(x, y) function with additional plots.
-
-    """
+            dots: List[Dot] = None,
+            title: str = None) -> None:
+    """Plot f(x, y) function with additional plots."""
     fig = plt.figure(1)
     graph = fig.add_subplot(1, 1, 1)
 
@@ -45,14 +44,21 @@ def plot_2d(func: Callable,
             if dot.y < graph_y_min:
                 graph_y_min = dot.y
 
-    plt.imshow(
-        F,
-        vmin=F.min(),
-        vmax=F.max(),
-        origin='lower',
-        extent=[X.min(), X.max(), Y.min(), Y.max()],
-        cmap='viridis')
+    # Plot title.
+    if title:
+        plt.title(r'${}$'.format(title), fontsize=12)
 
-    plt.title(r'${}$'.format(func2d_to_string(func)), fontsize=12)
+    plt.imshow(F,
+               vmin=F.min(),
+               vmax=F.max(),
+               origin='lower',
+               extent=[
+                   X.min(),
+                   X.max(),
+                   Y.min(),
+                   Y.max(),
+               ],
+               cmap='viridis')
+
     plt.contour(X, Y, F)
     plt.show()

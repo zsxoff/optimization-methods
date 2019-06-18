@@ -6,7 +6,10 @@ def find_min_border(f: Callable,
                     init_step: float = 0.25,
                     step_expand: float = 1.1,
                     max_iters: int = 10) -> Tuple[float, float]:
-    # TODO Doc
+    """
+    Looking for an approximate limit for the minimum value of the function.
+
+    """
     x0 = start
     x1 = start
     r0 = f(x0)

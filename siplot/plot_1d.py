@@ -1,7 +1,9 @@
-import numpy as np
-import matplotlib.pyplot as plt
 from typing import List
-from siplot.plot import Dot, LineXV, LineXH, VectorXY
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+from siplot.plot import Dot, LineXH, LineXV, VectorXY
 
 
 def plot_1d(vectors: List[VectorXY],
@@ -11,10 +13,7 @@ def plot_1d(vectors: List[VectorXY],
             xticks_step_major: float = 1.0,
             xticks_step_minor: float = 0.5,
             title: str = None) -> None:
-    """
-    Plot f(x) function with additional plots.
-
-    """
+    """Plot f(x) function with additional plots."""
     fig = plt.figure(1)
     graph = fig.add_subplot(1, 1, 1)
     graph.grid(which='minor', alpha=0.1, linestyle="-")

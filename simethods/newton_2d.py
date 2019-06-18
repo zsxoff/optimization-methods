@@ -1,6 +1,7 @@
+from typing import Callable, Tuple
+
 import numpy as np
 from sympy import Symbol
-from typing import Callable, Tuple
 
 
 def newton_2d(f: Callable,
@@ -8,10 +9,7 @@ def newton_2d(f: Callable,
               y0: float,
               eps: float,
               max_iters: int = 100) -> Tuple[float, float]:
-    """
-    Newton method for f(x, y).
-
-    """
+    """Newton method for f(x, y)."""
 
     # Use SymPy function.
     x = Symbol('x')
