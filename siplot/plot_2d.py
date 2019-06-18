@@ -1,4 +1,4 @@
-from typing import Callable, List
+from typing import Callable, List, NoReturn
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -13,7 +13,7 @@ def plot_2d(func: Callable,
             graph_y_min: float = -4,
             graph_y_max: float = 4,
             dots: List[Dot] = None,
-            title: str = None) -> None:
+            title: str = None) -> NoReturn:
     """Plot f(x, y) function with additional plots."""
     fig = plt.figure(1)
     graph = fig.add_subplot(1, 1, 1)
