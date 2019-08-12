@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from typing import NoReturn, Union
+from typing import Union
 
 import numpy as np
 
@@ -13,7 +13,7 @@ def f(x: Union[float, np.ndarray]) -> Union[float, np.ndarray]:
     return x**2 - x**4
 
 
-def main() -> NoReturn:
+def main() -> None:
     """Find a approximate limit of the minimum value f(x)."""
 
     l_border, r_border = find_min_border(f)

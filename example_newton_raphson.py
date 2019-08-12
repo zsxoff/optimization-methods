@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-from typing import NoReturn
 
 import misc
 from simethods.newton_raphson_2d import newton_raphson_2d
@@ -12,7 +11,7 @@ def f(x: float, y: float) -> float:
     return y**4 + x * y**3 + 2 * (y**2) * (x**2) + y + x**4 - x
 
 
-def main() -> NoReturn:
+def main() -> None:
     """Newton-Raphson method example."""
     start_x = misc.inputf('Enter start X: ')
     start_y = misc.inputf('Enter start Y: ')

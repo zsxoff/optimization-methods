@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-from typing import NoReturn
-
 from sympy import cos
 
 from misc import inputf
@@ -15,7 +13,7 @@ def f(x: float, y: float) -> float:
     return x**2 + y**2 + 4 * cos(x)
 
 
-def main() -> NoReturn:
+def main() -> None:
     """Conjugate gradient method example."""
     start_x = inputf('Enter start X: ')
     start_y = inputf('Enter start Y: ')

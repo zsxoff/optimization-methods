@@ -1,4 +1,4 @@
-from typing import List, NoReturn
+from typing import List
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -12,7 +12,7 @@ def plot_1d(vectors: List[VectorXY],
             lines_xv: List[LineXV] = None,
             xticks_step_major: float = 1.0,
             xticks_step_minor: float = 0.5,
-            title: str = None) -> NoReturn:
+            title: str = None) -> None:
     """Plot f(x) function with additional plots."""
     fig = plt.figure(1)
     graph = fig.add_subplot(1, 1, 1)

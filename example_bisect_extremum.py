@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from typing import NoReturn, Union
+from typing import Union
 
 import numpy as np
 
@@ -15,7 +15,7 @@ def f(x: Union[float, np.ndarray]) -> Union[float, np.ndarray]:
     return x**3 - 7.5 * x**2 + 15.9 * x - 7.8
 
 
-def main() -> NoReturn:
+def main() -> None:
     """Find extremum dots f(x) by bisection method."""
     l_border = misc.inputf('left border: ')
     r_border = misc.inputf('right border: ')
