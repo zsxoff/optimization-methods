@@ -12,7 +12,7 @@ from siplot.plot_1d import plot_1d
 
 def f(x: Union[float, np.ndarray]) -> Union[float, np.ndarray]:
     """Test function."""
-    return x ** 3 - 7.5 * x ** 2 + 15.9 * x - 7.8
+    return x**3 - 7.5 * x**2 + 15.9 * x - 7.8
 
 
 def main() -> NoReturn:
@@ -27,9 +27,7 @@ def main() -> NoReturn:
     f_min = f(x_min)
     f_max = f(x_max)
 
-    print(f'L:   {l_border}\n'
-          f'R:   {r_border}\n'
-          f'eps: {eps}\n')
+    print(f'L:   {l_border}\n' f'R:   {r_border}\n' f'eps: {eps}\n')
 
     print(f'x_min    = {x_min}\n'
           f'f(x_min) = {f_min}\n'

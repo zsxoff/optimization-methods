@@ -9,7 +9,7 @@ from siplot.plot_2d import plot_2d
 
 def f(x: float, y: float) -> float:
     """Test function."""
-    return y ** 4 + x * y ** 3 + 2 * (y ** 2) * (x ** 2) + y + x ** 4 - x
+    return y**4 + x * y**3 + 2 * (y**2) * (x**2) + y + x**4 - x
 
 
 def main() -> NoReturn:

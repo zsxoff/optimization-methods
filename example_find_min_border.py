@@ -10,7 +10,7 @@ from siplot.plot_1d import plot_1d
 
 def f(x: Union[float, np.ndarray]) -> Union[float, np.ndarray]:
     """Test function."""
-    return x ** 2 - x ** 4
+    return x**2 - x**4
 
 
 def main() -> NoReturn:
@@ -18,8 +18,7 @@ def main() -> NoReturn:
 
     l_border, r_border = find_min_border(f)
 
-    print(f'L: {l_border}\n'
-          f'R: {r_border}\n')
+    print(f'L: {l_border}\n' f'R: {r_border}\n')
 
     # Plot result.
     vector_x = np.arange(l_border - 1, r_border + 1, 0.01)

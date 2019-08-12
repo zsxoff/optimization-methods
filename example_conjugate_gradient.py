@@ -12,7 +12,7 @@ from siplot.plot_2d import plot_2d
 
 def f(x: float, y: float) -> float:
     """Test function."""
-    return x ** 2 + y ** 2 + 4 * cos(x)
+    return x**2 + y**2 + 4 * cos(x)
 
 
 def main() -> NoReturn:
