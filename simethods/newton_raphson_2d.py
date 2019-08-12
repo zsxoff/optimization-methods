@@ -33,7 +33,7 @@ def newton_raphson_2d(f: Callable,
     _f_dy_dy = _f_dy.diff(y, 1)
 
     iterations_count = -1
-    optimal_step = 1
+    optimal_step = 1.0
 
     while True:
         iterations_count += 1
