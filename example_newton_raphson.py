@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 
 import misc
 from simethods.newton_raphson_2d import newton_raphson_2d
